@@ -1,5 +1,5 @@
 # WZRDProject
-Gamepad MOBA game in local coop
+Gamepad MOBA game in local multi.
 
 WZRD Project is a MOBA inspired local fighting game.
 
