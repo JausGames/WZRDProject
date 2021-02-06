@@ -81,7 +81,7 @@ namespace Inputs
                 {
                     ""name"": """",
                     ""id"": ""1c3b05d4-95b0-4260-a5b1-2ba5a40d2f8b"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -114,7 +114,7 @@ namespace Inputs
                 {
                     ""name"": ""up"",
                     ""id"": ""46832e4b-864d-452b-abcc-3d169fd987e2"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -136,7 +136,7 @@ namespace Inputs
                 {
                     ""name"": ""left"",
                     ""id"": ""79ddb7b4-6d57-44d9-837f-2f76a884ffe0"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -179,11 +179,33 @@ namespace Inputs
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4f4e9ca4-3072-4597-8ad0-27bfb2dc419d"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4ca23bc8-77bc-4bc3-8924-04736e843d4e"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""425ceaed-04b3-49b4-b9df-31e17e7dd5b0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -201,11 +223,33 @@ namespace Inputs
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b4631668-6209-412d-bfd6-c87a2b57affb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""BigAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""46112ed9-ecd2-4ad8-a504-6cbb1dcdc0ac"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Defense"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75ca3ade-dc85-44b7-959d-3e5ff8907150"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Defense"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -235,10 +279,10 @@ namespace Inputs
                 {
                     ""name"": ""up"",
                     ""id"": ""2e26c311-9ce5-4502-a57b-3df2bca4e902"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -246,10 +290,10 @@ namespace Inputs
                 {
                     ""name"": ""down"",
                     ""id"": ""2184e5fb-40c3-446a-b3fb-4d8bfb86db00"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -257,10 +301,10 @@ namespace Inputs
                 {
                     ""name"": ""left"",
                     ""id"": ""8ee039f7-ab62-4cef-bac0-63843eec76c1"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -268,10 +312,10 @@ namespace Inputs
                 {
                     ""name"": ""right"",
                     ""id"": ""b5f2c78c-6ef5-4748-a7a9-076f60df4ac0"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true

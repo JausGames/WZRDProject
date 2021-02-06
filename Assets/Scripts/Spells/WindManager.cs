@@ -100,13 +100,13 @@ public class WindManager : SpellManager
 
         particles.PlayDashParticle();
     }
-    public override void Attack(bool value, bool value2)
+    public override void Attack(bool perf, bool canc)
     {
-        if (Time.time <= attackTime) return;
+        if (Time.time <= attackTime || !perf) return;
         tornadoReturn = false;
         attackTime = Time.time + attackCadency;
         animator.PlayAttack();
-        Debug.Log("OnAttack, bool = " + value);
+        Debug.Log("OnAttack, bool = " + perf);
     }
     public void ThrowPlane()
     {

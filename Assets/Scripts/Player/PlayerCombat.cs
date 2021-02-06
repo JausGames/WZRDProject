@@ -35,10 +35,10 @@ public class PlayerCombat : MonoBehaviour
     {
         playerIndex = nb;
     }
-    public void Attack(bool value, bool value2)
+    public void Attack(bool perf, bool canc)
     {
         if (!canMove) return;
-        spells.Attack(value, value2);
+        spells.Attack(perf, canc);
         //attack = true;
 
     }

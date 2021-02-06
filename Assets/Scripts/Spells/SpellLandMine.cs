@@ -9,7 +9,7 @@ public class SpellLandMine : Spell
     private bool hasHit = false;
     private bool canBeReturn = false;
     private bool canBeDestroy = false;
-    private float mineForce = 300f;
+    private float mineForce = 150f;
     // Start is called before the first frame update
     void Awake()
     {

@@ -8,7 +8,7 @@ abstract public class SpellManager : MonoBehaviour
     [SerializeField] protected Sprite picture;
     abstract public void Dash(bool value);
     abstract public void Counter(Player oppo);
-    abstract public void Attack(bool value, bool value2);
+    abstract public void Attack(bool perfomed, bool canceled);
     abstract public void BigAttack(bool perfomed, bool canceled);
     abstract public void Defense();
     abstract public void Zone();

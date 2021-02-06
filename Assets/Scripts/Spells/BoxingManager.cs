@@ -133,12 +133,12 @@ public class BoxingManager : SpellManager
             Debug.Log("BoxingManager, Dash Direction : Backward");
             animator.DashBackward();
         }
-        if (controller.CheckRightDash(move, dir))
+        if (controller.CheckRightDir(move, dir))
         {
             Debug.Log("BoxingManager, Dash Direction : Right");
             animator.DashRight();
         }
-        if (!controller.CheckRightDash(move, dir))
+        if (!controller.CheckRightDir(move, dir))
         {
             Debug.Log("BoxingManager, Dash Direction : Left");
             animator.DashLeft();
@@ -167,9 +167,9 @@ public class BoxingManager : SpellManager
     {
         player.SetCanMove(value);
     }
-    public override void Attack(bool value, bool value2)
+    public override void Attack(bool perf, bool canc)
     {
-        Debug.Log("Boxing Manager, Attack : performed = " + value2);
+        Debug.Log("Boxing Manager, Attack : performed = " + perf);
         //if (inputBuff && value2) { SetCombo(true); SetBuff(false); }
 
         if (Time.time <= attackTime || inputBuff) return;

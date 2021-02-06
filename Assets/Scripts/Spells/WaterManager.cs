@@ -92,11 +92,11 @@ public class WaterManager : SpellManager
 
         particles.PlayDashParticle();
     }
-    public override void Attack(bool value, bool value2)
+    public override void Attack(bool perf, bool canc)
     {
-        Debug.Log("OnAttack, bool = " + value);
-        animator.PlayAttack(value);
-        attack = value;
+        Debug.Log("OnAttack, bool = " + !canc);
+        animator.PlayAttack(!canc);
+        attack = !canc;
     }
     public override void BigAttack(bool value, bool value2)
     {

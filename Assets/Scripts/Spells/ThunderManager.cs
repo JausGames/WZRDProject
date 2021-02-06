@@ -148,12 +148,12 @@ public class ThunderManager : SpellManager
         }
         animator.PlayDash();
     }
-    public override void Attack(bool value, bool value2)
+    public override void Attack(bool perf, bool canc)
     {
-        Debug.Log("OnAttack, bool = " + value);
-        attack = value;
-        attackThunder.SetActive(value);
-        animator.PlayAttack(value);
+        Debug.Log("OnAttack, bool = " + !canc);
+        attack = !canc;
+        attackThunder.SetActive(!canc);
+        animator.PlayAttack(!canc);
     }
     public override void BigAttack(bool perf, bool canc)
     {

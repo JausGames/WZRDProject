@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] public PlayerParticleManager particles;
     [SerializeField] public Renderer hat;
     [SerializeField] public Rigidbody body;
-    [SerializeField] private CapsuleCollider inGameCollider;
+    [SerializeField] private CapsuleCollider[] inGameColliders;
     [SerializeField] private Collider[] ragdollColliders;
     [SerializeField] private Rigidbody[] ragdollRigidbodies;
     [SerializeField] private List<Vector3> ragdollPosition= new List<Vector3>();
@@ -38,10 +38,16 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
         combat = GetComponent<PlayerCombat>();
         body = GetComponent<Rigidbody>();
-        inGameCollider = GetComponent<CapsuleCollider>();
+        inGameColliders = GetComponents<CapsuleCollider>();
         ragdollColliders = visual.GetComponentsInChildren<Collider>();
         ragdollRigidbodies = visual.GetComponentsInChildren<Rigidbody>();
-        if (inGameCollider) inGameCollider.enabled = true;
+        if (inGameColliders.Length > 0)
+        {
+            foreach (Collider col in inGameColliders)
+            {
+                col.enabled = true;
+            }
+        }
         if (ragdollColliders.Length > 1)
         {
             foreach (Collider col in ragdollColliders) col.enabled = false;
@@ -136,7 +142,15 @@ public class Player : MonoBehaviour
         {
             foreach (Rigidbody bod in ragdollRigidbodies) bod.isKinematic = !value;
         }
-        if (inGameCollider != null) { inGameCollider.enabled = !value; body.isKinematic = value; }
+        if (inGameColliders.Length > 0) 
+        {
+
+            foreach (Collider col in inGameColliders)
+            {
+                col.enabled = !value;
+            }
+            body.isKinematic = value; 
+        }
     }
     private void Die()
     {

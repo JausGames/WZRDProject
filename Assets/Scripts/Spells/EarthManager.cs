@@ -44,10 +44,10 @@ public class EarthManager : SpellManager
             {
                 if (hitCollider.gameObject.GetComponent<Spell>() != null && hitCollider.gameObject.GetComponent<Spell>().GetReturn())
                 {
-                    hitCollider.gameObject.GetComponent<Rigidbody>().velocity = -0.7f * hitCollider.gameObject.GetComponent<Rigidbody>().velocity;
+                    hitCollider.gameObject.GetComponent<Rigidbody>().velocity = -0.8f * hitCollider.gameObject.GetComponent<Rigidbody>().velocity;
                 }
             }
-            if (nextBAttack <= Time.time) shield = false;
+            if (nextBAttack <= Time.time + 1f) shield = false;
         }
     }
     public override void Dash(bool value)
@@ -56,13 +56,13 @@ public class EarthManager : SpellManager
         animator.PlayDash();
         nextDashtime = Time.time + dashCooldown;
         particles.PlayDashParticle();
-        body.AddForce((transform.forward + transform.up * 3f) * dashForce, ForceMode.Impulse);
+        body.AddForce((transform.forward + transform.up * 1.5f) * dashForce, ForceMode.Impulse);
     }
-    public override void Attack(bool value, bool value2)
+    public override void Attack(bool perf, bool canc)
     {
-        if (Time.time <= nextAttacktime) return;
+        if (Time.time <= nextAttacktime || !perf) return;
         animator.PlayAttack();
-        player.SetCanMove(false);
+        //player.SetCanMove(false);
 
     }
     public void ThrowRock()

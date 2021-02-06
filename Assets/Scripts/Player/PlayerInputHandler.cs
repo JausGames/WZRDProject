@@ -69,7 +69,7 @@ namespace Inputs
             if (combat == null) return;
             var canc = context.canceled;
             var perf = context.performed;
-            combat.Attack(!canc, perf);
+            combat.Attack(perf, canc);
         }
         public void OnDash(CallbackContext context)
         {
