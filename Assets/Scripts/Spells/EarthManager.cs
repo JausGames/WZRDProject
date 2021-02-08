@@ -15,8 +15,8 @@ public class EarthManager : SpellManager
     [SerializeField] private bool shield = false;
     [SerializeField] private bool invicible = false;
     private float nextDashtime;
-    private float dashCooldown = 2f;
-    private float dashForce = 70f;
+    private float dashCooldown = 3f;
+    private float dashForce = 100f;
     private float nextAttacktime;
     private float cooldown = .8f;
     private float rockForce = 50f;
@@ -53,10 +53,15 @@ public class EarthManager : SpellManager
     public override void Dash(bool value)
     {
         if (Time.time <= nextDashtime) return;
+        player.SetCanMove(false);
         animator.PlayDash();
         nextDashtime = Time.time + dashCooldown;
+    }
+    public void Jump()
+    {
         particles.PlayDashParticle();
         body.AddForce((transform.forward + transform.up * 1.5f) * dashForce, ForceMode.Impulse);
+
     }
     public override void Attack(bool perf, bool canc)
     {

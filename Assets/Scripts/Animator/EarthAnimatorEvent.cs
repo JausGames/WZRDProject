@@ -19,4 +19,8 @@ public class EarthAnimatorEvent : AnimatorEvent
     {
         earth.ThrowRock();
     }
+    public void JumpEvent()
+    {
+        earth.Jump();
+    }
 }

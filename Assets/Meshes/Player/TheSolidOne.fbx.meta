@@ -36,6 +36,39 @@ ModelImporter:
   - first:
       74: -3141875773581848077
     second: metarig.001|Walk-Right
+  - first:
+      74: -4461122830311770887
+    second: metarig|Attack-Base
+  - first:
+      74: 1205132921101904262
+    second: metarig|Attack-Big
+  - first:
+      74: 8072230301191761050
+    second: metarig|Attack-Self
+  - first:
+      74: -2634062918571136315
+    second: metarig|Attack-Wall
+  - first:
+      74: -3842835399916261590
+    second: metarig|Dash
+  - first:
+      74: -5324238279805231817
+    second: metarig|Idle
+  - first:
+      74: -7621946883770619637
+    second: metarig|T-Pose
+  - first:
+      74: -4871852569054194346
+    second: metarig|Walk-Backward
+  - first:
+      74: 44726217443170193
+    second: metarig|Walk-Forward
+  - first:
+      74: 754807500018666670
+    second: metarig|Walk-Left
+  - first:
+      74: -7368062190591132514
+    second: metarig|Walk-Right
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -80,6 +113,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: e1f94f1e3525a6a498a66abe0970beba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 60e505a26667dcd4f88dd15d696c730d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Mouth
     second: {fileID: 2100000, guid: 97340bd26c2a3e74bbf230756edb1319, type: 2}
   - first:
@@ -90,7 +133,22 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Shoes_black
+    second: {fileID: 2100000, guid: 4b963390c6ccaaa42ac4a54f0d7d8c71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes_white
+    second: {fileID: 2100000, guid: 80c33211b5847fd4ca37eaac03a3303d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Skin
+    second: {fileID: 2100000, guid: c013f02e2252bda4d98e4794f38c977e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin.001
     second: {fileID: 2100000, guid: c013f02e2252bda4d98e4794f38c977e, type: 2}
   materials:
     materialImportMode: 1
@@ -120,11 +178,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: metarig.001|Attack-Base
-      takeName: metarig.001|Attack-Base
+      name: metarig|Attack-Base
+      takeName: metarig|Attack-Base
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -144,7 +202,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.21404682
+      - time: 0.44575414
         functionName: AttackEvent
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
@@ -152,7 +210,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.30562735
+      - time: 0.47392002
         functionName: MoveTrueEvent
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
@@ -165,11 +223,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Attack-Big
-      takeName: metarig.001|Attack-Big
+      name: metarig|Attack-Big
+      takeName: metarig|Attack-Big
       internalID: 0
-      firstFrame: 10
-      lastFrame: 50
+      firstFrame: 30
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -189,7 +247,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8428094
+      - time: 0.81598014
         functionName: MoveTrueEvent
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
@@ -202,11 +260,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Attack-Self
-      takeName: metarig.001|Attack-Self
+      name: metarig|Attack-Self
+      takeName: metarig|Attack-Self
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -226,7 +284,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.97324413
+      - time: 0.86836606
         functionName: MoveTrueEvent
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
@@ -239,11 +297,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Attack-Wall
-      takeName: metarig.001|Attack-Wall
+      name: metarig|Attack-Wall
+      takeName: metarig|Attack-Wall
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -268,69 +326,85 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Dash
-      takeName: metarig.001|Dash
-      internalID: 0
-      firstFrame: 10
-      lastFrame: 38
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: metarig.001|Idle
-      takeName: metarig.001|Idle
-      internalID: 0
-      firstFrame: 10
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: metarig.001|T-Pose
-      takeName: metarig.001|T-Pose
+      name: metarig|Dash
+      takeName: metarig|Dash
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.20580798
+        functionName: JumpEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9841831
+        functionName: MoveTrueEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7eff325da707c24f89003ada6e6a42c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|Idle
+      takeName: metarig|Idle
+      internalID: 0
+      firstFrame: 30
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|T-Pose
+      takeName: metarig|T-Pose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -355,11 +429,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Walk-Backward
-      takeName: metarig.001|Walk-Backward
+      name: metarig|Walk-Backward
+      takeName: metarig|Walk-Backward
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -384,11 +458,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Walk-Forward
-      takeName: metarig.001|Walk-Forward
+      name: metarig|Walk-Forward
+      takeName: metarig|Walk-Forward
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -413,11 +487,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Walk-Left
-      takeName: metarig.001|Walk-Left
+      name: metarig|Walk-Left
+      takeName: metarig|Walk-Left
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -442,11 +516,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|Walk-Right
-      takeName: metarig.001|Walk-Right
+      name: metarig|Walk-Right
+      takeName: metarig|Walk-Right
       internalID: 0
-      firstFrame: 10
-      lastFrame: 30
+      firstFrame: 30
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
