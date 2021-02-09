@@ -76,7 +76,7 @@ public class EarthManager : SpellManager
         GameObject rockAttack = Instantiate(rock, powerBall.position, transform.rotation);
         particles.PlayThrowParticle();
         rockAttack.GetComponent<SpellRock>().SetOwner(player);
-        rockAttack.GetComponent<Rigidbody>().AddForce((transform.forward * 10f + Vector3.up) * rockForce, ForceMode.Impulse);
+        rockAttack.GetComponent<Rigidbody>().AddForce((transform.forward * 10f + Vector3.up * 2f) * rockForce, ForceMode.Impulse);
     }
     public override void BigAttack(bool value, bool value2)
     {
