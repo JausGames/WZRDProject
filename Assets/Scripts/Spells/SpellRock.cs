@@ -5,7 +5,9 @@ using UnityEngine;
 public class SpellRock : Spell
 {
     private Rigidbody body;
+    private Collider col;
     private Player player;
+    [SerializeField] private Rigidbody[] dividedBody;
     private bool hasHit = false;
     private bool canBeReturn = true;
     private bool canBeDestroy = true;
@@ -13,6 +15,16 @@ public class SpellRock : Spell
     void Awake()
     {
         body = GetComponent<Rigidbody>();
+        col = GetComponent<CapsuleCollider>();
+        dividedBody = GetComponentsInChildren<Rigidbody>();
+
+        for (int i = 1; i < dividedBody.Length; i++)
+        {
+            var cols = dividedBody[i].gameObject.GetComponents<Collider>();
+            foreach(Collider c in cols) Physics.IgnoreCollision(col, c);
+
+        }
+
     }
 
     // Update is called once per frame
@@ -23,9 +35,9 @@ public class SpellRock : Spell
     private void OnCollisionEnter(Collision collision)
     {
         if (hasHit) return;
-        if (collision.gameObject.GetComponentInParent<Player>() != null && collision.gameObject.GetComponentInParent<Player>() == player) return;
+        if (collision.gameObject.GetComponentInParent<Player>() == player) return;
 
-        if (!hasHit) Destroy(gameObject); 
+        if (!hasHit) Dismember(); 
         hasHit = true;
         if (collision.gameObject.GetComponentInParent<Player>() != null 
             && collision.gameObject.GetComponentInParent<Player>() != player)
@@ -48,5 +60,17 @@ public class SpellRock : Spell
     override public bool GetDestroyable()
     {
         return canBeDestroy;
+    }
+    private void Dismember()
+    {
+        var vel = body.velocity;
+        Destroy(body);
+        Destroy(col);
+        for (int i = 1; i < dividedBody.Length; i++)
+        {
+            dividedBody[i].isKinematic = false;
+            dividedBody[i].velocity = vel;
+        }
+        Destroy(this.gameObject, 3f);
     }
 }

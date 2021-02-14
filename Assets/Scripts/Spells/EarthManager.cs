@@ -50,17 +50,27 @@ public class EarthManager : SpellManager
             if (nextBAttack <= Time.time + 1f) shield = false;
         }
     }
-    public override void Dash(bool value)
+    public override void Dash(bool perfomed, bool canceled)
     {
-        if (Time.time <= nextDashtime) return;
+        if (Time.time <= nextDashtime || !perfomed) return;
+        nextDashtime = Time.time + dashCooldown;
         player.SetCanMove(false);
         animator.PlayDash();
-        nextDashtime = Time.time + dashCooldown;
     }
     public void Jump()
     {
+        Debug.Log("EarthManager, Jump");
         particles.PlayDashParticle();
-        body.AddForce((transform.forward + transform.up * 1.5f) * dashForce, ForceMode.Impulse);
+        body.AddForce((transform.forward * 0.9f + transform.up * 0.8f) * dashForce, ForceMode.Impulse);
+
+    }
+    public void Reception()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 7f);
+        foreach (var hitCollider in hitColliders)
+        {
+            hitCollider.SendMessage("AddDamage");
+        }
 
     }
     public override void Attack(bool perf, bool canc)
@@ -73,10 +83,11 @@ public class EarthManager : SpellManager
     public void ThrowRock()
     {
         nextAttacktime = Time.time + cooldown;
-        GameObject rockAttack = Instantiate(rock, powerBall.position, transform.rotation);
+        GameObject rockAttack = Instantiate(rock, powerBall.position + transform.forward * 2f, transform.rotation);
+        //Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         particles.PlayThrowParticle();
         rockAttack.GetComponent<SpellRock>().SetOwner(player);
-        rockAttack.GetComponent<Rigidbody>().AddForce((transform.forward * 10f + Vector3.up * 2f) * rockForce, ForceMode.Impulse);
+        rockAttack.GetComponent<Rigidbody>().AddForce((transform.forward * 10f + Vector3.up * 2.5f) * rockForce, ForceMode.Impulse);
     }
     public override void BigAttack(bool value, bool value2)
     {

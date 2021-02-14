@@ -77,10 +77,10 @@ public class WaterManager : SpellManager
             if (Time.time >= dashTimer) dash = false; 
         }
     }
-    public override void Dash(bool value)
+    public override void Dash(bool performed, bool canceled)
     {
-        if (dash && !value) dash = false;
-        if (Time.time <= nextDashtime) return;
+        if (dash && canceled) dash = false;
+        if (Time.time <= nextDashtime || !performed) return;
         animator.PlayDash();
         nextDashtime = Time.time + dashCooldown;
         dash = true;

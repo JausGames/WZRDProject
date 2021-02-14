@@ -23,4 +23,8 @@ public class EarthAnimatorEvent : AnimatorEvent
     {
         earth.Jump();
     }
+    public void ReceptionEvent()
+    {
+        earth.Reception();
+    }
 }

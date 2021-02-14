@@ -75,8 +75,9 @@ namespace Inputs
         {
             Debug.Log("OnDash");
             if (combat == null) return;
+            var perf = context.performed;
             var canc = context.canceled;
-            combat.Dash(!canc);
+            combat.Dash(perf, canc);
         }
         public void OnZone()
         {

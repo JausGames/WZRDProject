@@ -87,16 +87,15 @@ public class WindManager : SpellManager
             nextDashtime = Time.time + dashCooldown;
         }
     }
-    public override void Dash(bool value)
+    public override void Dash(bool performed, bool canceled)
     {
-        if (dashNumber <= 0 || closedDash >= Time.time) return;
+        if (dashNumber <= 0 || closedDash >= Time.time || !performed) return;
         if (dashNumber == 2) nextDashtime = Time.time + dashCooldown;
         animator.PlayDash();
         closedDash = Time.time + dashCadency;
         dashDir = transform.forward;
         body.AddForce(transform.forward * dashForce, ForceMode.Impulse);
         dashNumber --;
-
 
         particles.PlayDashParticle();
     }

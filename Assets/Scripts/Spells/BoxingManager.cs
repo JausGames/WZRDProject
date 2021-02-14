@@ -111,9 +111,9 @@ public class BoxingManager : SpellManager
         if (rightHand )Gizmos.DrawWireSphere(rightHandTransform.position, attackRadius);
         if (!rightHand) Gizmos.DrawWireSphere(leftHandTransform.position, attackRadius);
     }
-    public override void Dash(bool value)
+    public override void Dash(bool performed, bool canceled)
     {
-        if (dashNumber <= 0 || closedDash >= Time.time) return;
+        if (dashNumber <= 0 || closedDash >= Time.time || !performed) return;
         if (dashNumber == 2) nextDashtime = Time.time + dashCooldown;
         closedDash = Time.time + dashCadency;
         dashDir = transform.forward;

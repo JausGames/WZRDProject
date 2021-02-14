@@ -49,10 +49,10 @@ public class PlayerCombat : MonoBehaviour
         //attack = true;
 
     }
-    public void Dash(bool value)
+    public void Dash(bool perf, bool canc)
     {
         if (!canMove) return;
-        spells.Dash(value);
+        spells.Dash(perf, canc);
         //dash = true;
 
     }

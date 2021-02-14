@@ -123,10 +123,10 @@ public class ThunderManager : SpellManager
             }
         }
     }
-    public override void Dash(bool value)
+    public override void Dash(bool performed, bool canceled)
     {
         if (Time.time <= nextDashtime) return;
-        if (dash && !value)
+        if (dash && canceled)
         {
             teleportArc.SetActive(false);
             dash = false;
@@ -135,7 +135,7 @@ public class ThunderManager : SpellManager
             transform.position = vect;
             return;
         }
-        if (value && dashTimer < Time.time)
+        if (performed && dashTimer < Time.time)
         {
             teleportArc.SetActive(true);
             particles.PlayDashParticle();
