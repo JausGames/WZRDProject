@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EarthManager : SpellManager
 {
+    
     [SerializeField] private EarthAnimatorController animator;
     [SerializeField] private EarthParticleManager particles;
+    [SerializeField] LayerMask playerMask;
     private Rigidbody body = null;
     [SerializeField] private Player player;
     [SerializeField] private GameObject rock;
@@ -14,18 +17,25 @@ public class EarthManager : SpellManager
     [SerializeField] private Transform powerBall;
     [SerializeField] private bool shield = false;
     [SerializeField] private bool invicible = false;
-    private float nextDashtime;
-    private float dashCooldown = 3f;
-    private float dashForce = 100f;
+    [SerializeField] private bool landing = false;
+
     private float nextAttacktime;
-    private float cooldown = .8f;
+    private float cooldown = .6f;
     private float rockForce = 50f;
+
     private float nextBigAttacktime;
-    private float bigCooldown = 5f;
+    private float bigCooldown = 7f;
+
+    private float nextDashtime;
+    private float dashCooldown = 4f;
+    private float dashForce = 200f;
+    private float landingForce = 40f;
+
     private float nextXAttack;
-    private float xCooldown = 2f;
+    private float xCooldown = 3f;
+
     private float nextBAttack;
-    private float bCooldown = 2f;
+    private float bCooldown = 3f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -50,39 +60,73 @@ public class EarthManager : SpellManager
             if (nextBAttack <= Time.time + 1f) shield = false;
         }
     }
+    private void FixedUpdate()
+    {
+
+        if (landing)
+        {
+            body.AddForce(Vector3.down * 0.05f * dashForce, ForceMode.Acceleration);
+            if (player.GetOnFloor())
+            {
+                animator.PlayLand();
+                landing = false;
+                Landing();
+            }
+        }
+    }
     public override void Dash(bool perfomed, bool canceled)
     {
+        Debug.Log("EarthManager, Dash : perf & canc = " + perfomed + " & " + canceled);
         if (Time.time <= nextDashtime || !perfomed) return;
+        Debug.Log("EarthManager, Dash : perf = " + perfomed);
         nextDashtime = Time.time + dashCooldown;
         player.SetCanMove(false);
         animator.PlayDash();
     }
     public void Jump()
     {
-        Debug.Log("EarthManager, Jump");
-        particles.PlayDashParticle();
-        body.AddForce((transform.forward * 0.9f + transform.up * 0.8f) * dashForce, ForceMode.Impulse);
+            Debug.Log("EarthManager, Jump");
+            particles.PlayDashParticle();
+            body.AddForce((transform.forward * 0.9f + transform.up * 1.2f) * dashForce, ForceMode.Impulse);
+
 
     }
-    public void Reception()
+    public void StartLanding()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 7f);
-        foreach (var hitCollider in hitColliders)
-        {
-            hitCollider.SendMessage("AddDamage");
-        }
+        Debug.Log("EarthManager, StartLanding");
+        landing = true;
+    }
+    public void Landing()
+    {
+        
+            Debug.Log("EarthManager, Landing");
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 4f, playerMask);
+            particles.PlayLandParticle();
+        if (hitColliders.Length == 0) return;
+            foreach (Collider col in hitColliders)
+            {
+                if (col.GetComponentInParent<Player>() != player)
+                {
+                //col.GetComponent<Rigidbody>().AddExplosionForce(landingForce, transform.position, 15f, 2f);
+                //col.GetComponentInParent<Rigidbody>().AddExplosionForce(landingForce, transform.position, 15f, 2f);
 
+                col.GetComponent<Rigidbody>().AddForce(Vector3.up * landingForce, ForceMode.Impulse);
+                col.GetComponentInParent<Rigidbody>().AddForce(Vector3.up * landingForce, ForceMode.Impulse);
+                col.GetComponentInParent<Player>().GetHit(15f, player);
+                }
+            }
+        
     }
     public override void Attack(bool perf, bool canc)
     {
         if (Time.time <= nextAttacktime || !perf) return;
+        nextAttacktime = Time.time + cooldown;
         animator.PlayAttack();
         //player.SetCanMove(false);
 
     }
     public void ThrowRock()
     {
-        nextAttacktime = Time.time + cooldown;
         GameObject rockAttack = Instantiate(rock, powerBall.position + transform.forward * 2f, transform.rotation);
         //Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         particles.PlayThrowParticle();
@@ -120,5 +164,10 @@ public class EarthManager : SpellManager
     public override void Counter(Player oppo)
     {
 
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 4f);
     }
 }

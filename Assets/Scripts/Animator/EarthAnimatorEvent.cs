@@ -13,6 +13,7 @@ public class EarthAnimatorEvent : AnimatorEvent
     }
     public void MoveTrueEvent()
     {
+        Debug.Log("EarthAnimatorEven, MoveTrueEvent");
         player.SetCanMove(true);
     }
     public void AttackEvent()
@@ -23,8 +24,12 @@ public class EarthAnimatorEvent : AnimatorEvent
     {
         earth.Jump();
     }
-    public void ReceptionEvent()
+    public void StartLandingEvent()
     {
-        earth.Reception();
+        earth.StartLanding();
+    }
+    public void LandingEvent()
+    {
+        earth.Landing();
     }
 }

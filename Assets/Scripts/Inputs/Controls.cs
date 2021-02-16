@@ -75,6 +75,14 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Taunt"",
+                    ""type"": ""Value"",
+                    ""id"": ""32e64bd2-7b35-48c2-b2b3-2bfeca655a22"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -319,6 +327,17 @@ namespace Inputs
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd7e5ab7-29aa-45ff-958c-9eec271ab81d"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Taunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -362,6 +381,7 @@ namespace Inputs
             m_Player_B = m_Player.FindAction("B", throwIfNotFound: true);
             m_Player_Defense = m_Player.FindAction("Defense", throwIfNotFound: true);
             m_Player_BigAttack = m_Player.FindAction("BigAttack", throwIfNotFound: true);
+            m_Player_Taunt = m_Player.FindAction("Taunt", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -418,6 +438,7 @@ namespace Inputs
         private readonly InputAction m_Player_B;
         private readonly InputAction m_Player_Defense;
         private readonly InputAction m_Player_BigAttack;
+        private readonly InputAction m_Player_Taunt;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
@@ -429,6 +450,7 @@ namespace Inputs
             public InputAction @B => m_Wrapper.m_Player_B;
             public InputAction @Defense => m_Wrapper.m_Player_Defense;
             public InputAction @BigAttack => m_Wrapper.m_Player_BigAttack;
+            public InputAction @Taunt => m_Wrapper.m_Player_Taunt;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -459,6 +481,9 @@ namespace Inputs
                     @BigAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
                     @BigAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
                     @BigAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
+                    @Taunt.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTaunt;
+                    @Taunt.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTaunt;
+                    @Taunt.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTaunt;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -484,6 +509,9 @@ namespace Inputs
                     @BigAttack.started += instance.OnBigAttack;
                     @BigAttack.performed += instance.OnBigAttack;
                     @BigAttack.canceled += instance.OnBigAttack;
+                    @Taunt.started += instance.OnTaunt;
+                    @Taunt.performed += instance.OnTaunt;
+                    @Taunt.canceled += instance.OnTaunt;
                 }
             }
         }
@@ -515,6 +543,7 @@ namespace Inputs
             void OnB(InputAction.CallbackContext context);
             void OnDefense(InputAction.CallbackContext context);
             void OnBigAttack(InputAction.CallbackContext context);
+            void OnTaunt(InputAction.CallbackContext context);
         }
     }
 }

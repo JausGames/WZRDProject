@@ -15,4 +15,9 @@ abstract public class AnimatorController : MonoBehaviour
     abstract public void Die();
     abstract public void Revive();
     abstract public void Spawn();
+
+    virtual public void PlayTaunt(Vector2 tauntVect)
+    {
+
+    }
 }

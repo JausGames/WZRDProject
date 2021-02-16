@@ -57,6 +57,12 @@ namespace Inputs
             move = context.ReadValue<Vector2>();
             motor.SetMove(move);
         }
+        public void OnTaunt(CallbackContext context)
+        {
+            Debug.Log("OnTaunt");
+            if (combat == null) return;
+            combat.PlayTaunt(context.ReadValue<Vector2>());
+        }
         public void OnLook(CallbackContext context)
         {
             if (motor == null) return;

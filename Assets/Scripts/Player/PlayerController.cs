@@ -63,12 +63,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!canMove) return;
 
         var cols = Physics.OverlapSphere(onFloorGO.transform.position, 0.2f, floorLayer);
         if (cols.Length == 0) onFloor = false;
         else onFloor = true;
 
+        if (!canMove) return;
 
         if (look.magnitude >= 0.3f)
         {
@@ -172,6 +172,10 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetMove()
     {
        return new Vector2 (move.x, move.z);
+    }
+    public bool GetOnFloor()
+    {
+        return onFloor;
     }
     public Vector2 GetLook()
     {

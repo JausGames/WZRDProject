@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpellRock : Spell
 {
     private Rigidbody body;
+    [SerializeField] ParticleSystem throwParticle;
+    [SerializeField] ParticleSystem contactParticle;
     private Collider col;
     private Player player;
     [SerializeField] private Rigidbody[] dividedBody;
@@ -35,6 +37,8 @@ public class SpellRock : Spell
     private void OnCollisionEnter(Collision collision)
     {
         if (hasHit) return;
+        contactParticle.Play();
+        throwParticle.Stop();
         if (collision.gameObject.GetComponentInParent<Player>() == player) return;
 
         if (!hasHit) Dismember(); 

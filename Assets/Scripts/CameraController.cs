@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*alives.Clear();
+        alives.Clear();
         foreach(Player pl in players)
         {
             if (pl.GetAlive()) alives.Add(pl);
@@ -54,8 +54,8 @@ public class CameraController : MonoBehaviour
         var x = 18f - 18f / (farest * 0.3f + 1);
         var z = -30f + 30f / (farest * 0.2f + 1);
 
-        var posMoy = moy / alives.Count + new Vector3(0f, Mathf.Clamp(x, 6f ,17f), Mathf.Clamp(z, -28f, -6f));*/
-        transform.position = Vector3.Slerp(transform.position, players[1].transform.position + Vector3.up * 5f + Vector3.back * 4f, 0.05f);
+        var posMoy = moy / alives.Count + new Vector3(0f, Mathf.Clamp(x, 6f ,17f), Mathf.Clamp(z, -28f, -6f));
+        transform.position = Vector3.Slerp(transform.position, posMoy, 0.05f);
     }
     private void OnDrawGizmos()
     {

@@ -190,6 +190,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 354e2268-c1c1-464c-bb80-991588ed999d
     m_ActionName: Player/Look[/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9138168703314343171}
+        m_TargetAssemblyTypeName: Inputs.PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnTaunt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 32e64bd2-7b35-48c2-b2b3-2bfeca655a22
+    m_ActionName: Player/Taunt[/XInputControllerWindows/dpad]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

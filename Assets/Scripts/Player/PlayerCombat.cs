@@ -6,10 +6,12 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private bool canMove = false;
     [SerializeField] private SpellManager spells;
+    [SerializeField] private AnimatorController animator;
     private int playerIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<AnimatorController>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void SetCanMove(bool value)
     {
+        Debug.Log("PlayerCombat, SetCanMove : value = " + value);
         canMove = value;
     }
     public bool GetCanMove()
@@ -40,6 +43,12 @@ public class PlayerCombat : MonoBehaviour
         if (!canMove) return;
         spells.Attack(perf, canc);
         //attack = true;
+
+    }
+    public void PlayTaunt(Vector2 tauntVect)
+    {
+        if (!canMove) return;
+        animator.PlayTaunt(tauntVect);
 
     }
     public void BigAttack(bool performed, bool canceled)

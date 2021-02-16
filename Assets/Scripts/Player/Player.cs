@@ -88,7 +88,11 @@ public class Player : MonoBehaviour
             paralysed = false;
         }
     }
-
+    public bool GetOnFloor()
+    {
+        if (!controller) return false;
+        return controller.GetOnFloor();
+    }
     public bool GetAlive()
     {
         return isAlive;

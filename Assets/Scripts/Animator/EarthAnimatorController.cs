@@ -60,6 +60,10 @@ public class EarthAnimatorController : AnimatorController
     {
         animator.SetTrigger("Dash");
     }
+    public void PlayLand()
+    {
+        animator.SetTrigger("Landing");
+    }
     public void PlayWall()
     {
         animator.SetTrigger("WallAttack");
@@ -72,10 +76,16 @@ public class EarthAnimatorController : AnimatorController
     public override void Revive()
     {
         animator.enabled = true;
+        animator.CrossFade("Idle", 0);
     }
     public override void Spawn()
     {
         animator.CrossFade("Idle", 0);
+    }
+
+    public override void PlayTaunt(Vector2 tauntVect)
+    {
+        animator.SetTrigger("Taunt01");
     }
 
 }

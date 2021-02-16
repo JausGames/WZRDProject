@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Taunt",
+                    "type": "Value",
+                    "id": "32e64bd2-7b35-48c2-b2b3-2bfeca655a22",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -304,6 +312,17 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "cd7e5ab7-29aa-45ff-958c-9eec271ab81d",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Taunt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
