@@ -7,6 +7,7 @@ public class BoxingManager : SpellManager
     [SerializeField]public BoxingParticleManager particles;
     [SerializeField] private BoxingAnimatorController animator;
     [SerializeField] private PlayerController controller;
+    [SerializeField] private PlayerUI UI;
     [SerializeField] private Player player;
     private Rigidbody body = null;
 
@@ -68,6 +69,7 @@ public class BoxingManager : SpellManager
         directions.Add(new Vector2(1, 0));
         directions.Add(new Vector2(-1, 0));
         directions.Add(new Vector2(0, -1));
+        UI = GetComponentInChildren<PlayerUI>();
     }
 
     // Update is called once per frame
@@ -103,6 +105,15 @@ public class BoxingManager : SpellManager
             dashNumber++;
             nextDashtime = Time.time + dashCooldown;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        UI.SetBaseTime(Mathf.Max(0f, (nextAttacktime - Time.time) / cooldown));
+        UI.SetBigTime(Mathf.Max(0f, (nextBigAttacktime - Time.time) / bigCooldown));
+        UI.SetDashTime(Mathf.Max(0f, (nextDashtime - Time.time) / dashCooldown));
+        UI.SetZoneTime(Mathf.Max(0f, (nextBAttack - Time.time) / bCooldown));
+        UI.SetDefTime(Mathf.Max(0f, (nextXAttack - Time.time) / xCooldown));
     }
     private void OnDrawGizmos()
     {

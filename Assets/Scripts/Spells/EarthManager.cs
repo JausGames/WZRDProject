@@ -8,6 +8,7 @@ public class EarthManager : SpellManager
     
     [SerializeField] private EarthAnimatorController animator;
     [SerializeField] private EarthParticleManager particles;
+    [SerializeField] private PlayerUI UI;
     [SerializeField] LayerMask playerMask;
     private Rigidbody body = null;
     [SerializeField] private Player player;
@@ -40,6 +41,7 @@ public class EarthManager : SpellManager
     void Awake()
     {
         body = GetComponent<Rigidbody>();
+        UI = GetComponentInChildren<PlayerUI>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,11 @@ public class EarthManager : SpellManager
     }
     private void FixedUpdate()
     {
+        UI.SetBaseTime(Mathf.Max(0f, (nextAttacktime - Time.time) / cooldown));
+        UI.SetBigTime(Mathf.Max(0f, (nextBigAttacktime - Time.time) / bigCooldown));
+        UI.SetDashTime(Mathf.Max(0f, (nextDashtime - Time.time) / dashCooldown));
+        UI.SetZoneTime(Mathf.Max(0f, (nextBAttack - Time.time) / bCooldown));
+        UI.SetDefTime(Mathf.Max(0f, (nextXAttack - Time.time) / xCooldown));
 
         if (landing)
         {

@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void SetUIUp()
     {
-        UI = transform.parent.Find("UI").gameObject;
+        /*UI = transform.parent.Find("UI").gameObject;
         for (int i = 0; i < players.Count; i++)
         {
             //Create and set healthBar
@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviour
             //Place healthbar
             var rect = bar.GetComponent<RectTransform>();
             rect.anchoredPosition = UIPositions[i];
-        }
+        }*/
 
         List<Inputs.PlayerInputHandlerMenu> inputMenu = new List<Inputs.PlayerInputHandlerMenu>();
         inputMenu.AddRange(FindObjectsOfType<Inputs.PlayerInputHandlerMenu>());

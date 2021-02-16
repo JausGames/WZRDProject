@@ -12,6 +12,7 @@ public class Healthometer : MonoBehaviour
     void Start()
     {
         slider = gameObject.GetComponent<Slider>();
+        GetComponentInParent<Canvas>().worldCamera = FindObjectOfType<Camera>();
     }
 
     private void FixedUpdate()

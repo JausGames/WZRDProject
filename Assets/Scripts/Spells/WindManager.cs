@@ -7,6 +7,7 @@ public class WindManager : SpellManager
     [SerializeField] private WindParticleManager particles;
     [SerializeField] private Player player;
     [SerializeField] private WindAnimatorController animator;
+    [SerializeField] private PlayerUI UI;
     private Rigidbody body = null;
     [SerializeField] private GameObject plane;
     [SerializeField] private GameObject tornado;
@@ -55,6 +56,7 @@ public class WindManager : SpellManager
     {
         body = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
+        UI = GetComponentInChildren<PlayerUI>();
     }
 
     // Update is called once per frame
@@ -86,6 +88,14 @@ public class WindManager : SpellManager
             dashNumber++;
             nextDashtime = Time.time + dashCooldown;
         }
+    }
+    private void FixedUpdate()
+    {
+        UI.SetBaseTime(Mathf.Max(0f, (nextAttacktime - Time.time) / cooldown));
+        UI.SetBigTime(Mathf.Max(0f, (nextBigAttacktime - Time.time) / bigCooldown));
+        UI.SetDashTime(Mathf.Max(0f, (nextDashtime - Time.time) / dashCooldown));
+        UI.SetZoneTime(Mathf.Max(0f, (nextBAttack - Time.time) / bCooldown));
+        UI.SetDefTime(Mathf.Max(0f, (nextXAttack - Time.time) / xCooldown));
     }
     public override void Dash(bool performed, bool canceled)
     {

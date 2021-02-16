@@ -6,6 +6,7 @@ public class WaterManager : SpellManager
 {
     [SerializeField] private WaterAnimatorController animator;
     [SerializeField] private WaterParticleManager particles;
+    [SerializeField] private PlayerUI UI;
     [SerializeField] private Player player;
     [SerializeField] private Transform powerball;
     private Rigidbody body = null;
@@ -50,6 +51,7 @@ public class WaterManager : SpellManager
         body = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
         //materials.AddRange(visual.GetComponentsInChildren<Material>());
+        UI = GetComponentInChildren<PlayerUI>();
     }
 
     // Update is called once per frame
@@ -76,6 +78,14 @@ public class WaterManager : SpellManager
             body.velocity = dashDir * dashForce;
             if (Time.time >= dashTimer) dash = false; 
         }
+    }
+    private void FixedUpdate()
+    {
+        UI.SetBaseTime(Mathf.Max(0f, (nextAttacktime - Time.time) / cooldown));
+        UI.SetBigTime(Mathf.Max(0f, (nextBigAttacktime - Time.time) / bigCooldown));
+        UI.SetDashTime(Mathf.Max(0f, (nextDashtime - Time.time) / dashCooldown));
+        UI.SetZoneTime(Mathf.Max(0f, (nextBAttack - Time.time) / bCooldown));
+        UI.SetDefTime(Mathf.Max(0f, (nextXAttack - Time.time) / xCooldown));
     }
     public override void Dash(bool performed, bool canceled)
     {

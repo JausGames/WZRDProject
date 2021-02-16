@@ -6,6 +6,7 @@ public class ThunderManager : SpellManager
 {
     [SerializeField] private ThunderAnimatorController animator;
     [SerializeField] private ThunderParticleManager particles;
+    [SerializeField] private PlayerUI UI;
     [SerializeField] private GameObject attackThunder;
     [SerializeField] private Transform thunderStart;
     [SerializeField] private Transform thunderEnd;
@@ -48,6 +49,7 @@ public class ThunderManager : SpellManager
         body = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
         attackThunder.SetActive(false);
+        UI = GetComponentInChildren<PlayerUI>();
     }
 
     // Update is called once per frame
@@ -147,6 +149,15 @@ public class ThunderManager : SpellManager
 
         }
         animator.PlayDash();
+    }
+    private void FixedUpdate()
+    {
+
+        UI.SetBaseTime(0f);
+        UI.SetBigTime(Mathf.Max(0f, (nextBigAttacktime - Time.time) / bigCooldown));
+        UI.SetDashTime(Mathf.Max(0f, (nextDashtime - Time.time) / dashCooldown));
+        UI.SetZoneTime(Mathf.Max(0f, (nextBAttack - Time.time) / bCooldown));
+        UI.SetDefTime(Mathf.Max(0f, (nextXAttack - Time.time) / xCooldown));
     }
     public override void Attack(bool perf, bool canc)
     {
