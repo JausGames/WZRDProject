@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
         if (alives.Count == 1)
         {
             var pos = alives[0].transform.position + new Vector3(0f, 7f , -7f);
-            transform.position = pos;
+            transform.position = Vector3.Slerp(transform.position, pos, 0.15f);
             return;
 
         }
@@ -56,6 +56,7 @@ public class CameraController : MonoBehaviour
 
         var posMoy = moy / alives.Count + new Vector3(0f, Mathf.Clamp(x, 6f ,17f), Mathf.Clamp(z, -28f, -6f));
         transform.position = Vector3.Slerp(transform.position, posMoy, 0.05f);
+        
     }
     private void OnDrawGizmos()
     {

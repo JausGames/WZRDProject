@@ -7,25 +7,40 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Infos")]
     [SerializeField] private int nbPlayers;
     [SerializeField] private List<Inputs.PlayerInputHandlerMenu> inputs = new List<Inputs.PlayerInputHandlerMenu>();
     [SerializeField] GameObject MatchManagerPrefab;
     [SerializeField] List<GameObject> playerTypes = new List<GameObject>();
-    [SerializeField] MapHandler mapHandler;
-    [SerializeField] private Text UICount;
-    [SerializeField] private Button play;
-    [SerializeField] private Button quit;
-    [SerializeField] private List<Image> playerCircle = new List<Image>();
+
+    [Header("Menus")]
+    [SerializeField] List<GameObject> menus = new List<GameObject>();
+
+    [Header("Menus - Player")]
+    [SerializeField] List<GameObject> players = new List<GameObject>();
     [SerializeField] private List<Text> playerText = new List<Text>();
     [SerializeField] private List<Image> playerPicture = new List<Image>();
     [SerializeField] private List<Button> PlayerSelect = new List<Button>();
-    public Scrollbar scrollbar;
+    [SerializeField] private Button next;
+    [SerializeField] private Button quit;
+    [SerializeField] float ANIM_TIME = 0.5f;
+    [SerializeField] float animTime = 0f;
+
+    [Header("Menus - Settings")]
+    [SerializeField] private Button play;
+    [SerializeField] private Button back;
+    [Header("Menus - Maps")]
+    [SerializeField] MapHandler mapHandler;
 
 
     void Start()
     {
+        ChangeMenu(0);
+        next.onClick.AddListener(delegate { ChangeMenu(2); });
+        back.onClick.AddListener(delegate { ChangeMenu(1); });
         play.onClick.AddListener(ChangeScene);
         quit.onClick.AddListener(QuitGame);
+
         for (int i = 0; i < playerText.Count; i++)
         {
             Debug.Log(playerText[i].text);
@@ -49,29 +64,34 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
+        var oldNbPlayer = nbPlayers;
         List<Inputs.PlayerInputHandlerMenu> inputLocal = new List<Inputs.PlayerInputHandlerMenu>(); 
         inputLocal.AddRange(FindObjectsOfType<Inputs.PlayerInputHandlerMenu>());
-        if (inputLocal.Count >= 2) play.interactable = true;
-        if (inputLocal.Count < 2) play.interactable = false;
-        for (int i = 0; i < inputLocal.Count; i++)
+        inputs.Clear();
+        inputs.AddRange(inputLocal);
+        nbPlayers = inputs.Count;
+        if (nbPlayers != oldNbPlayer) animTime = Time.time + ANIM_TIME;
+
+        if (animTime < Time.time) return;
+
+        if (inputs.Count >= 2) next.interactable = true;
+        else if (inputs.Count >= 1 && menus[0].activeSelf) ChangeMenu(1);
+        else next.interactable = false;
+        var nb4UI = Mathf.Max(nbPlayers, 1);
+        var UIPadding = 0.30f - ((float)nbPlayers * 0.05f);
+        for (int i = 0; i < inputs.Count; i++)
         {
+            players[i].SetActive(true);
+            players[i].GetComponent<RectTransform>().anchorMin = Vector2.Lerp( new Vector2(UIPadding + ((1f - UIPadding * 2f) / nb4UI) * (float) i, 0f), players[i].GetComponent<RectTransform>().anchorMin, 0.8f);
+            players[i].GetComponent<RectTransform>().anchorMax = Vector2.Lerp( new Vector2(UIPadding + ((1f - UIPadding * 2f) / nb4UI) * (float) (i + 1f), 1f), players[i].GetComponent<RectTransform>().anchorMax, 0.8f); ;
             PlayerSelect[2 * i].interactable = true;
             PlayerSelect[2 * i + 1].interactable = true;
         }
-        for (int i = inputLocal.Count; i < 4; i++)
-        {
-            PlayerSelect[2 * i].interactable = false;
-            PlayerSelect[2 * i + 1].interactable = false;
-        }
-        inputs.Clear();
-        inputs.AddRange(inputLocal);
-        for (int i = 0; i < inputs.Count; i++)
-        {
-            playerCircle[i].color = Color.green;
-        }
         for (int i = inputs.Count; i < 4; i++)
         {
-            playerCircle[i].color = Color.red;
+            players[i].SetActive(false);
+            PlayerSelect[2 * i].interactable = false;
+            PlayerSelect[2 * i + 1].interactable = false;
         }
     }
 
@@ -90,6 +110,28 @@ public class MainMenu : MonoBehaviour
         MatchManager.instance.SetPlayers(list);
         SceneManager.LoadScene("BaseGame");
     }
+
+
+    public void ChangeMenu(int menuOrder)
+    {
+        foreach (GameObject menu in menus)
+        {
+            menu.SetActive(false);
+        }
+        menus[menuOrder].SetActive(true);
+    }
+    public void DisplayMenu(bool value)
+    {
+        if (!value)
+            foreach (GameObject menu in menus)
+            {
+                menu.SetActive(value);
+            }
+        else menus[menus.Count - 1].SetActive(value);
+
+        this.enabled = value;
+    }
+
     private void ChangePlayer(int nb)
     {
         Debug.Log("Debug ok : ChangePlayer, nb = " + nb);
